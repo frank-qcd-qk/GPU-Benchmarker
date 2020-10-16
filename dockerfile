@@ -11,4 +11,5 @@ RUN cp cuda/include/cudnn*.h /usr/local/cuda/include && cp cuda/lib64/libcudnn* 
 ENV LD_LIBRARY_PATH="/usr/local/cuda-11.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
 ENV PATH="/usr/local/cuda-11.0/bin${PATH:+:${PATH}}"
 
-RUN python -m pip install --upgrade pip && pip uninstall --yes numpy tensorflow-gpu tensorflow-estimator tensorboard cupy && pip install tf-nightly tf-nightly-gpu cupy-cuda110
+RUN python -m pip install --upgrade pip && pip uninstall --yes numpy tensorflow-gpu tensorflow-estimator tensorboard cupy && pip install -U setuptools grpcio && pip install tf-nightly tf-nightly-gpu cupy-cuda110
+RUN rm -rf /opt/tensorflow && rm -rf /opt/tensorrt
